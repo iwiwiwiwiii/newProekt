@@ -37,7 +37,8 @@ const users = JSON.parse(localStorage.getItem("users") || "[]");
 if(users.some(user => user.email === formData.email)) {newErrors.email = "Такой Email уже есть" ;}
 
 const newUser = {
-    name : "formData.name",
-    email : "formData.email",
-    password : "formData.password",
-}
+    id: Date.now(),
+    name: formData.name,
+    email: formData.email,
+    password: formData.password,
+    createdAt: new Date().toISOString()};
