@@ -6,7 +6,7 @@ export const products = [
     price: 15000,
     description: "Бело-синий попугай.",
     availability: true,
-    image: "https://i.pinimg.com/736x/c7/6c/bd/c76cbd93e964c231f4c879916f851180.jpg",
+    image: "https://i.ibb.co/tpFMmB7W/image.jpg",
     category: "bird",
   },
   {
@@ -16,7 +16,7 @@ export const products = [
     price: 1400,
     description: "Желтая канарейка.",
     availability: true,
-    image: "https://i.pinimg.com/736x/fe/1f/65/fe1f653020b7c23ab814e5218a7ba40a.jpg",
+    image: "https://i.ibb.co/TD7tZ4fq/image.jpg",
     category: "bird",
   },
   {
@@ -26,7 +26,7 @@ export const products = [
     price: 90000,
     description: "Белогрудый тукан..",
     availability: true,
-    image: "https://zoo-oasis.ru/wp-content/uploads/2019/08/ramphastos_tucanus_tucanus.jpg",
+    image: "https://i.ibb.co/xKdc90NN/image.jpg",
     category: "bird",
   },
   {
@@ -36,7 +36,7 @@ export const products = [
     price: 500000,
     description: "Исполинский козодой.",
     availability: true,
-    image: "https://i.pinimg.com/originals/3c/5e/a1/3c5ea189191af403caedae4eb95d8064.jpg",
+    image: "https://i.ibb.co/CpcYTQZX/image.jpg",
     category: "bird",
   },
   {
@@ -46,7 +46,7 @@ export const products = [
     price: 20000,
     description: "Домашний хорек.",
     availability: true,
-    image: "https://i.pinimg.com/736x/37/c9/a1/37c9a119a157ea156315601f2d115327.jpg",
+    image: "https://i.ibb.co/n8kjMpCG/image.jpg",
     category: "small",
   },
   {
@@ -56,7 +56,7 @@ export const products = [
     price: 25000,
     description: "Домашняя выдра.",
     availability: true,
-    image: "https://i.pinimg.com/736x/d3/93/37/d393378649ec9e5e82a9faff232cf6dd.jpg",
+    image: "https://i.ibb.co/8L0bcLmp/image.jpg",
     category: "small",
   }
 ];
