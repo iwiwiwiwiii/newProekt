@@ -38,6 +38,8 @@ function AppContent() {
 
   return (
     <div style={{
+      width: '1200px',
+      margin: '0 auto',
       padding: '20px',
       background: '#f0f4f0',
       minHeight: '100vh'
@@ -152,19 +154,23 @@ function AppContent() {
       
       <Routes>
         <Route path="/" element={
-          <div className="products-grid">
+          <div style={{
+            display: 'flex',
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            gap: '24px',
+            justifyContent: 'center',
+            minHeight: '700px'
+          }}>
             {filteredProducts.length === 0 ? (
-              <div className="no-products">Товары не найдены</div>
+              <div style={{ textAlign: 'center', width: '100%', padding: '50px', color: '#666' }}>
+                Товары не найдены
+              </div>
             ) : (
               filteredProducts.map(product => (
                 <Link key={product.id} to={`/product/${product.id}`} style={{ textDecoration: 'none' }}>
                   <ProductCard animal={product} />
                 </Link>
-              ))
-            )}
-            {filteredProducts.length < 4 && filteredProducts.length > 0 && (
-              Array(4 - filteredProducts.length).fill(null).map((_, i) => (
-                <div key={`empty-${i}`} style={{ visibility: 'hidden', height: '380px' }} />
               ))
             )}
           </div>

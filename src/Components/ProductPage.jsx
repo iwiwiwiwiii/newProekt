@@ -45,25 +45,21 @@ function ProductPage() {
       }}>← Назад</button>
       
       <div style={{ display: 'flex', gap: '30px', flexWrap: 'wrap' }}>
-        <div style={{
-          flex: 1,
-          background: '#e8f5e9',
-          borderRadius: '16px',
-          padding: '40px',
-          textAlign: 'center',
-          minHeight: '200px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}>
-          <div>
-            <div style={{ fontSize: '48px', fontWeight: 'bold', color: '#0a3d0a', marginBottom: '10px' }}>
-              {product.name}
-            </div>
-            <div style={{ fontSize: '18px', color: '#666' }}>{product.category === 'bird' ? 'Птица' : 'Животное'}</div>
-          </div>
+        <div style={{ flex: 1 }}>
+          <img 
+            src={product.image} 
+            alt={product.name}
+            style={{
+              width: '100%',
+              maxHeight: '300px',
+              objectFit: 'contain',
+              borderRadius: '12px'
+            }}
+            onError={(e) => {
+              e.target.src = 'https://via.placeholder.com/300x300?text=No+Image';
+            }}
+          />
         </div>
-        
         <div style={{ flex: 1 }}>
           <h1 style={{ marginBottom: '15px', fontSize: '28px', color: '#0a3d0a' }}>{product.name}</h1>
           <div style={{ color: '#666', marginBottom: '10px', fontSize: '16px' }}>Возраст: {product.age}</div>

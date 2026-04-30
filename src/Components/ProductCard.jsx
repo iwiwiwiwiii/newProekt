@@ -17,19 +17,26 @@ function ProductCard({ animal }) {
       <div style={{
         width: '100%',
         height: '180px',
-        background: '#e8f5e9',
+        background: '#f5f5f5',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
-        fontSize: '24px',
-        fontWeight: 'bold',
-        color: '#0a3d0a',
-        textAlign: 'center',
-        padding: '20px'
+        justifyContent: 'center'
       }}>
-        {animal.name}
+        <img 
+          src={animal.image} 
+          alt={animal.name}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'contain'
+          }}
+          onError={(e) => {
+            e.target.src = 'https://via.placeholder.com/250x180?text=No+Image';
+          }}
+        />
       </div>
       <div style={{ padding: '12px' }}>
+        <h3 style={{ margin: '0 0 5px 0', fontSize: '16px' }}>{animal.name}</h3>
         <div style={{ color: '#666', fontSize: '12px' }}>Возраст: {animal.age}</div>
         <div style={{
           fontSize: '18px',
