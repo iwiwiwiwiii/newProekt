@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Registration from './Components/Registration';
 import ProductCard from './Components/ProductCard';
 import ProductPage from './Components/ProductPage';
+import AboutPage from './Components/AboutPage';
 import { products } from './servises/data';
 import { useCart, CartProvider } from './Components/CartContext';
 import CartModal from './Components/CartModal';
@@ -25,7 +26,6 @@ function AppContent() {
     setIsAuthenticated(false);
   };
 
-  // Фильтрация товаров
   const filteredProducts = products.filter(product => {
     if (filter !== 'all' && product.category !== filter) return false;
     if (search && !product.name.toLowerCase().includes(search.toLowerCase())) return false;
@@ -38,8 +38,6 @@ function AppContent() {
 
   return (
     <div style={{
-      maxWidth: '100%',
-      margin: '0 auto',
       padding: '20px',
       background: '#f0f4f0',
       minHeight: '100vh'
@@ -52,15 +50,15 @@ function AppContent() {
         padding: '20px',
         borderRadius: '16px',
         marginBottom: '20px',
-        boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
         flexWrap: 'wrap',
         gap: '15px'
       }}>
         <Link to="/" style={{ textDecoration: 'none' }}>
-          <h1 style={{ margin: 0, color: '#2d6a2d', fontSize: '24px' }}>Наши питомцы</h1>
+          <h1 style={{ margin: 0, color: '#2d6a2d' }}>Наши питомцы</h1>
         </Link>
         
         <div style={{ display: 'flex', gap: '15px', alignItems: 'center', flexWrap: 'wrap' }}>
+          <Link to="/about" style={{ textDecoration: 'none', color: '#333' }}>О нас</Link>
           <button 
             onClick={() => setShowCart(true)}
             style={{
@@ -69,14 +67,10 @@ function AppContent() {
               color: 'white',
               border: 'none',
               borderRadius: '8px',
-              cursor: 'pointer',
-              fontWeight: '500',
-              transition: 'background 0.3s'
+              cursor: 'pointer'
             }}
-            onMouseEnter={(e) => e.target.style.background = '#1e4a1e'}
-            onMouseLeave={(e) => e.target.style.background = '#2d6a2d'}
           >
-            🛒 Корзина ({getTotalItems()})
+            Корзина ({getTotalItems()})
           </button>
           <button 
             onClick={handleLogout}
@@ -86,19 +80,14 @@ function AppContent() {
               color: 'white',
               border: 'none',
               borderRadius: '8px',
-              cursor: 'pointer',
-              fontWeight: '500',
-              transition: 'background 0.3s'
+              cursor: 'pointer'
             }}
-            onMouseEnter={(e) => e.target.style.background = '#033d03'}
-            onMouseLeave={(e) => e.target.style.background = '#045a04'}
           >
             Выйти
           </button>
         </div>
       </div>
 
-      {/* Фильтры и поиск */}
       <div style={{
         display: 'flex',
         gap: '15px',
@@ -117,8 +106,7 @@ function AppContent() {
             border: '1px solid #ddd',
             background: 'white',
             cursor: 'pointer',
-            color: '#333',
-            fontSize: '14px'
+            color: '#333'
           }}
         >
           <option value="all">Все категории</option>
@@ -128,7 +116,7 @@ function AppContent() {
 
         <input 
           type="text"
-          placeholder="Поиск по названию..."
+          placeholder="Поиск..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           style={{
@@ -138,12 +126,10 @@ function AppContent() {
             flex: 1,
             minWidth: '200px',
             background: 'white',
-            color: '#333',
-            fontSize: '14px'
+            color: '#333'
           }}
         />
         
-        {/* Очистить фильтры */}
         {(filter !== 'all' || search) && (
           <button 
             onClick={() => {
@@ -156,8 +142,7 @@ function AppContent() {
               border: 'none',
               background: '#045a04',
               color: 'white',
-              cursor: 'pointer',
-              fontSize: '14px'
+              cursor: 'pointer'
             }}
           >
             Сбросить
@@ -167,17 +152,9 @@ function AppContent() {
       
       <Routes>
         <Route path="/" element={
-          <div style={{
-            display: 'flex',
-            flexDirection: 'row',
-            flexWrap: 'wrap',
-            gap: '24px',
-            justifyContent: 'flex-start'
-          }}>
+          <div className="products-grid">
             {filteredProducts.length === 0 ? (
-              <div style={{ textAlign: 'center', width: '100%', padding: '50px', color: '#666' }}>
-                Товары не найдены
-              </div>
+              <div className="no-products">Товары не найдены</div>
             ) : (
               filteredProducts.map(product => (
                 <Link key={product.id} to={`/product/${product.id}`} style={{ textDecoration: 'none' }}>
@@ -185,9 +162,15 @@ function AppContent() {
                 </Link>
               ))
             )}
+            {filteredProducts.length < 4 && filteredProducts.length > 0 && (
+              Array(4 - filteredProducts.length).fill(null).map((_, i) => (
+                <div key={`empty-${i}`} style={{ visibility: 'hidden', height: '380px' }} />
+              ))
+            )}
           </div>
         } />
         <Route path="/product/:id" element={<ProductPage />} />
+        <Route path="/about" element={<AboutPage />} />
       </Routes>
 
       {showCart && <CartModal onClose={() => setShowCart(false)} />}
@@ -204,12 +187,5 @@ function App() {
     </BrowserRouter>
   );
 }
-<div className="products-grid">
-  {products.map(product => (
-    <Link key={product.id} to={`/product/${product.id}`}>
-      <ProductCard animal={product} />
-    </Link>
-  ))}
-</div>
 
 export default App;

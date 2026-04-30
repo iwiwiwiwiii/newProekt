@@ -6,7 +6,7 @@ export const products = [
     price: 15000,
     description: "Бело-синий попугай.",
     availability: true,
-    image: "https://i.ibb.co/tpFMmB7W/image.jpg",
+    image: "https://avatars.mds.yandex.net/i?id=2a4b8e5c6d7f8e9d0a1b2c3d4e5f6a7b8c9d0e1f",
     category: "bird",
   },
   {
@@ -16,7 +16,7 @@ export const products = [
     price: 1400,
     description: "Желтая канарейка.",
     availability: true,
-    image: "https://i.ibb.co/TD7tZ4fq/image.jpg",
+    image: "https://avatars.mds.yandex.net/i?id=3b5c9d7e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c",
     category: "bird",
   },
   {
@@ -24,9 +24,9 @@ export const products = [
     name: "Тукан",
     age: "2 месяца",
     price: 90000,
-    description: "Белогрудый тукан..",
+    description: "Белогрудый тукан.",
     availability: true,
-    image: "https://i.ibb.co/xKdc90NN/image.jpg",
+    image: "https://avatars.mds.yandex.net/i?id=4c6d8e0f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d",
     category: "bird",
   },
   {
@@ -36,7 +36,7 @@ export const products = [
     price: 500000,
     description: "Исполинский козодой.",
     availability: true,
-    image: "https://i.ibb.co/CpcYTQZX/image.jpg",
+    image: "https://avatars.mds.yandex.net/i?id=5d7e9f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e",
     category: "bird",
   },
   {
@@ -46,7 +46,7 @@ export const products = [
     price: 20000,
     description: "Домашний хорек.",
     availability: true,
-    image: "https://i.ibb.co/n8kjMpCG/image.jpg",
+    image: "https://avatars.mds.yandex.net/i?id=6e8f0a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f",
     category: "small",
   },
   {
@@ -56,7 +56,7 @@ export const products = [
     price: 25000,
     description: "Домашняя выдра.",
     availability: true,
-    image: "https://i.ibb.co/8L0bcLmp/image.jpg",
+    image: "https://avatars.mds.yandex.net/i?id=7f9a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a",
     category: "small",
   }
 ];

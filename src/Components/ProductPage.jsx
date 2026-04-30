@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useCart } from './CartContext';
+import { products } from '../servises/data';
 
 function ProductPage() {
   const { id } = useParams();
@@ -8,35 +9,22 @@ function ProductPage() {
   const { addToCart } = useCart();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Имитация API запроса
-    const loadProduct = async () => {
-      try {
-        setLoading(true);
-        // Здесь будет запрос к API
-        const response = await fetch(`/api/products/${id}`);
-        // Пока используем мок-данные
-        const mockProducts = [
-          { id: 1, name: 'Попугай', age: '1 месяц', price: 15000, description: 'Бело-синий попугай. Ручной, говорит привет', image: 'https://via.placeholder.com/400' },
-          { id: 2, name: 'Канарейка', age: '3 месяца', price: 1400, description: 'Желтая канарейка. Красиво поет', image: 'https://via.placeholder.com/400' },
-        ];
-        const found = mockProducts.find(p => p.id === parseInt(id));
-        if (found) setProduct(found);
-        else setError('Товар не найден');
-      } catch (err) {
-        setError('Ошибка загрузки');
-      } finally {
-        setLoading(false);
-      }
-    };
-    loadProduct();
+    setTimeout(() => {
+      const found = products.find(p => p.id === parseInt(id));
+      setProduct(found);
+      setLoading(false);
+    }, 500);
   }, [id]);
 
-  if (loading) return <div style={{ textAlign: 'center', padding: '50px' }}>Загрузка...</div>;
-  if (error) return <div style={{ textAlign: 'center', padding: '50px', color: 'red' }}>{error}</div>;
-  if (!product) return null;
+  if (loading) {
+    return <div style={{ textAlign: 'center', padding: '50px' }}>Загрузка...</div>;
+  }
+
+  if (!product) {
+    return <div style={{ textAlign: 'center', padding: '50px', color: 'red' }}>Товар не найден</div>;
+  }
 
   return (
     <div style={{
@@ -48,7 +36,7 @@ function ProductPage() {
     }}>
       <button onClick={() => navigate(-1)} style={{
         padding: '8px 16px',
-        background: '#6c757d',
+        background: '#045a04',
         color: 'white',
         border: 'none',
         borderRadius: '8px',
@@ -57,19 +45,37 @@ function ProductPage() {
       }}>← Назад</button>
       
       <div style={{ display: 'flex', gap: '30px', flexWrap: 'wrap' }}>
-        <div style={{ flex: 1 }}>
-          <img src={product.image} alt={product.name} style={{ width: '100%', borderRadius: '12px' }} />
+        <div style={{
+          flex: 1,
+          background: '#e8f5e9',
+          borderRadius: '16px',
+          padding: '40px',
+          textAlign: 'center',
+          minHeight: '200px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}>
+          <div>
+            <div style={{ fontSize: '48px', fontWeight: 'bold', color: '#0a3d0a', marginBottom: '10px' }}>
+              {product.name}
+            </div>
+            <div style={{ fontSize: '18px', color: '#666' }}>{product.category === 'bird' ? 'Птица' : 'Животное'}</div>
+          </div>
         </div>
+        
         <div style={{ flex: 1 }}>
-          <h1 style={{ marginBottom: '15px' }}>{product.name}</h1>
-          <div style={{ color: '#666', marginBottom: '10px' }}>Возраст: {product.age}</div>
-          <div style={{ fontSize: '28px', fontWeight: 'bold', color: '#2d6a2d', marginBottom: '20px' }}>
+          <h1 style={{ marginBottom: '15px', fontSize: '28px', color: '#0a3d0a' }}>{product.name}</h1>
+          <div style={{ color: '#666', marginBottom: '10px', fontSize: '16px' }}>Возраст: {product.age}</div>
+          <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#2d6a2d', marginBottom: '20px' }}>
             {product.price.toLocaleString()} ₽
           </div>
-          <p style={{ marginBottom: '20px', lineHeight: 1.6 }}>{product.description}</p>
+          <p style={{ marginBottom: '20px', lineHeight: 1.6, fontSize: '16px', color: '#555' }}>
+            {product.description}
+          </p>
           <button onClick={() => addToCart(product)} style={{
             width: '100%',
-            padding: '12px',
+            padding: '14px',
             background: '#2d6a2d',
             color: 'white',
             border: 'none',
