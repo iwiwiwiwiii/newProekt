@@ -2,11 +2,12 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Registration from './Components/Registration';
 import ProductCard from './Components/ProductCard';
-import ProductPage from './Components/ProductPage';
-import AboutPage from './Components/AboutPage';
+import ProductPage from './Page/ProductPage';
+import AboutPage from './Page/AboutPage';
 import { products } from './servises/data';
 import { useCart, CartProvider } from './Components/CartContext';
 import CartModal from './Components/CartModal';
+import './App.css';
 
 function AppContent() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

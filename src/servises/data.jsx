@@ -1,3 +1,10 @@
+import popugai from "../assets/images/popugai.jpg";
+import kanareyka from "../assets/images/kanareyka.jpg";
+import tukan from "../assets/images/tukan.jpg";
+import kozodoy from "../assets/images/kozodoy.jpg";
+import horek from "../assets/images/horek.jpg";
+import vydra from "../assets/images/vydra.jpg";
+
 export const products = [
   {
     id: 1,
@@ -6,7 +13,7 @@ export const products = [
     price: 15000,
     description: "Бело-синий попугай.",
     availability: true,
-    image: "/images/popugai.jpg",
+    image: popugai,
     category: "bird",
   },
   {
@@ -16,7 +23,7 @@ export const products = [
     price: 1400,
     description: "Желтая канарейка.",
     availability: true,
-    image: "/images/kanareyka.jpg",
+    image: kanareyka,
     category: "bird",
   },
   {
@@ -26,7 +33,7 @@ export const products = [
     price: 90000,
     description: "Белогрудый тукан.",
     availability: true,
-    image: "/images/tukan.jpg",
+    image: tukan,
     category: "bird",
   },
   {
@@ -36,7 +43,7 @@ export const products = [
     price: 500000,
     description: "Исполинский козодой.",
     availability: true,
-    image: "/images/kozodoy.jpg",
+    image: kozodoy,
     category: "bird",
   },
   {
@@ -46,7 +53,7 @@ export const products = [
     price: 20000,
     description: "Домашний хорек.",
     availability: true,
-    image: "/images/horek.jpg",
+    image: horek,
     category: "small",
   },
   {
@@ -56,7 +63,7 @@ export const products = [
     price: 25000,
     description: "Домашняя выдра.",
     availability: true,
-    image: "/images/vydra.jpg",
+    image: vydra,
     category: "small",
   }
 ];
